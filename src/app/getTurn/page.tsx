@@ -1,8 +1,10 @@
+'use client'
 import Titulo from "@/modules/title/Title";
 import Styles from "./page.module.css";
 import TextField from "@/modules/inputs/textField";
 import Combo from "@/modules/inputs/combo"
 import Button from "@/modules/Button/Button";
+import Form from "@/components/form/form";
 
 const motives = [
     {
@@ -30,13 +32,13 @@ export default function Home() {
       <main>
         <Titulo texto="Saca tu número"/>
         <section className={Styles.section}>
-            <form className={Styles.form} action="turno?dni=446" method="POST">
-                <TextField label="DNI" name="dni" placeHolder="Ingrese DNI" type="number" />
-                <Combo label="Motivo" name="motive" options={motives} placeHolder=""/>
+            <Form className={Styles.form} onSubmit={(data) => console.log(data)} >
+                <TextField label="DNI" name="dni" placeholder="Ingrese DNI" maxLength={8} pattern="[0-9]{8}"/>
+                <Combo label="Motivo" name="motive" options={motives} placeHolder="" />
                 <div className={Styles.buttonCenter}>
                     <Button style={{backgroundColor: '#F20303'}} buttonClass="primary" type="submit">Continuar</Button>
                 </div>
-            </form>  
+            </Form>  
         </section>
       </main>
     );

@@ -1,18 +1,17 @@
 import { ReactNode } from "react";
 import Styles from "@/modules/inputs/textField.module.css";
 
-interface inputProps {
+type inputProps = React.HTMLProps<HTMLInputElement>  & {
     label: string;
     name: string;
-    placeHolder: string;
-    type?: 'number' 
+    placeholder: string;
 }
 
 const TextField: React.FC<inputProps> = (props) => {
     return (
         <div className={Styles.inputContainer}>
             <span className={Styles.inputLabel}>{props.label}:</span>
-            <input className={Styles.textField} name={props.name} placeholder={props.placeHolder} type={props.type}/>
+            <input className={Styles.textField} type={props.type} id={`form_data_${props.name}`} {...props}/>
         </div>
         
     )

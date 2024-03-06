@@ -11,7 +11,7 @@ const Combo: React.FC<inputProps> = (props) => {
     return (
         <div className={Styles.inputContainer}>
             <span className={Styles.inputLabel}>{props.label}:</span>
-            <select name={props.name} id={props.name} className={Styles.combo}>
+            <select name={props.name} id={`form_data_${props.name}`} className={Styles.combo}>
                 {props.options.map((option, index) => 
                     <option key={index} value={option.value}> {option.text} </option>
                 )}
